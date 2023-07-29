@@ -6,6 +6,10 @@ import Image from "next/image";
 import React from "react";
 import logo from "../../Assets/Images/logo.svg";
 import loginlogo from "../../Assets/Images/loginlogo.svg";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import DiscordIcon from "../../Assets/Images/discord.svg";
+import SendIcon from "../../Assets/Images/SendIcon.svg";
 
 const page = () => {
   //Formik Logics
@@ -14,6 +18,7 @@ const page = () => {
       EmailOrUsername: "",
       password: "",
       checkbox: "",
+      Subscribe: "",
     },
 
     //Validate form
@@ -23,6 +28,7 @@ const page = () => {
         .required("Username/Email is required"),
       password: Yup.string().required(`Password can't be empty`),
       // checkbox: Yup.boolean(),
+      Subscribe: Yup.string(),
     }),
 
     // Submit Form
@@ -37,25 +43,25 @@ const page = () => {
   return (
     <form onSubmit={formiklog.handleSubmit}>
       <div className="overflow-hidden">
-        <nav className="flex justify-between items-center w-[100%] pl-[5px] pr-[5px]">
-          <Image src={logo} alt="logo" width={80} height={10} />
-          <ul className="flex justify-center items-center text-[8px]">
-            <li className="px-[0px] py-[4.5px] bg-gray-700 text-white rounded-bl-lg">
-              <a className="px-[12.5px] py-[4.5px] bg-white text-black rounded-bl-lg rounded-tr-lg">
+        <nav className="pt-[1%] backdrop-blur-md flex justify-between items-center w-[100%] h-[10%] px-[5%]">
+          <Image src={logo} alt="logo" width={140} />
+          <ul className="flex justify-center items-center text-lg ">
+            <li className=" py-[0px] bg-gray-700 text-white rounded-bl-lg">
+              <a className="px-[20px] py-[0.3em] bg-white text-black chippedbutton">
                 Features
               </a>
             </li>
-            <li className="px-[12.5px] py-[4.5px] bg-gray-700 text-white">
+            <li className="px-[20px] py-[0.3em] bg-gray-700 text-white">
               <a className="">Pricing</a>
             </li>
-            <li className="px-[12.5px] py-[4.5px] bg-gray-700 text-white">
+            <li className="px-[20px] py-[0.3em] bg-gray-700 text-white">
               <a className="">About us</a>
             </li>
-            <li className="px-[12.5px] py-[4.5px] bg-gray-700 text-white">
+            <li className="px-[20px] pr-[25px] py-[0.3em] bg-gray-700 text-white">
               <a className="">More</a>
             </li>
           </ul>
-          <button className=" text-xs bg-white text-black rounded-sm px-[20px] mt-[2px] py-[3px] font-bold rounded-bl-lg rounded-tr-lg">
+          <button className="chippedbutton bg-white text-black px-[1.5em] py-[0.3em]  text-lg font-bold ">
             Sign up
           </button>
         </nav>
@@ -65,10 +71,10 @@ const page = () => {
             <Image src={loginlogo} alt="login logo" />
           </div>
           <div className="w-3/5 mr-5 flex flex-col justify-center  gap-y-2">
-            <p className=" font-bold pb-10">Sign in</p>
+            <p className=" text-3xl font-bold pb-8">Sign in</p>
             <div id=" usernamediv">
               <p
-                className={` text-[8px] ${
+                className={` text-lg ${
                   formiklog.errors.EmailOrUsername ? "text-red-500" : ""
                 }`}
               >
@@ -79,7 +85,7 @@ const page = () => {
               <input
                 type="text"
                 name="EmailOrUsername"
-                className=" bg-transparent border-white border rounded w-4/5 h-6 text-[9px]"
+                className=" bg-transparent border-white border rounded w-4/5 h-10 text-lg"
                 value={formiklog.values.EmailOrUsername}
                 onChange={formiklog.handleChange}
                 onBlur={formiklog.handleBlur}
@@ -87,7 +93,7 @@ const page = () => {
             </div>
             <div id="passworddiv">
               <p
-                className={` text-[8px] ${
+                className={` text-lg ${
                   formiklog.errors.password ? "text-red-500" : ""
                 }`}
               >
@@ -98,40 +104,41 @@ const page = () => {
               <input
                 type="password"
                 name="password"
-                className=" bg-transparent border-white border rounded w-4/5 h-6 text-[9px]"
+                className=" bg-transparent border-white border rounded w-4/5 h-10 text-lg"
                 value={formiklog.values.password}
                 onChange={formiklog.handleChange}
                 // onBlur={formiklog.handleBlur}
               />
             </div>
-            <label className=" text-[8px] w-4/5 text-center">
+            <label className=" text-lg w-4/5 text-center">
               Forgot password?
             </label>
             <div className=" flex items-center">
               <input
                 type="checkbox"
                 name="checkbox"
-                className=" w-3 h-3 bg-transparent border-white focus:ring-0 focus:ring-offset-0 rounded-sm cursor-pointer"
+                className=" w-5 h-5 bg-transparent border-white focus:ring-0 focus:ring-offset-0 rounded-sm cursor-pointer"
                 value={formiklog.values.checkbox}
                 onChange={formiklog.handleChange}
               />
-              <p className=" text-[9px] ml-4">Remember me?</p>
+              <p className=" text-lg ml-4">Remember me?</p>
             </div>
             <button
               type="submit"
               id="button-save"
-              className=" text-xs bg-white text-black rounded-sm w-4/5 py-1 font-bold"
+              className=" bg-white text-black rounded-sm w-4/5 h-10 py-1 text-lg font-bold"
             >
               Sign in
             </button>
-            <p className=" text-[8px] w-4/5 text-center">
+            <p className=" text-lg w-4/5 text-center">
               Don't have an account? <label>Sign up</label>
             </p>
           </div>
         </div>
 
+        <hr className="h-[2px] my-8 bg-white border-0" />
         <section>
-          <ul>
+          <ul className="flex justify-evenly items-center h-[25vh]">
             <li>About Us</li>
             <li>Features</li>
             <li>Pricing</li>
@@ -139,27 +146,45 @@ const page = () => {
           </ul>
         </section>
 
-        <section>
-          <div>
-            {/* <Image /> */}
-            <p>
+        <hr className="h-[2px] my-8 bg-white border-0" />
+        <section className="flex justify-evenly items-start h-[25vh]">
+          <div className="grid gap-y-10">
+            <Image src={logo} alt="logo" width={250} />
+            <p className="text-lg">
               All rights reserved. <br />
               2023 CLOAK.
             </p>
           </div>
 
-          <div>
-            <p>Stay updated on Cloak news and announcements</p>
-            <input type="email" placeholder="example@gmail.com" />
-            <icon></icon>
+          <div className="grid gap-y-10 ">
+            <p className="text-lg">
+              Stay updated on Cloak news and announcements
+            </p>
+            <div className="relative">
+              <input
+                type="email"
+                name="Subscribe"
+                placeholder="example@gmail.com"
+                className="chippedbutton w-[30vw] text-lg text-black bg-white indent-1"
+                value={formiklog.values.Subscribe}
+                onChange={formiklog.handleChange}
+                onBlur={formiklog.handleBlur}
+              />
+              <Image
+                src={SendIcon}
+                alt="sendicon"
+                className="absolute top-1/2 -translate-y-1/2 right-5"
+                onClick={formiklog.handleSubmit}
+              />
+            </div>
           </div>
 
-          <div>
-            <p>Socials</p>
-            <div>
-              <icon></icon>
-              <icon></icon>
-              <icon></icon>
+          <div className="grid gap-y-10">
+            <p className="text-lg">Socials</p>
+            <div className="flex gap-x-5">
+              <FacebookIcon fontSize="large" />
+              <TwitterIcon fontSize="large" />
+              <Image src={DiscordIcon} alt="logo" width={35} />
             </div>
           </div>
         </section>

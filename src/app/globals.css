@@ -5,5 +5,23 @@
 :root {
   background-color: #000000;
   color: #ffffff;
-  /* overflow-x: hidden; */
+}
+
+.chippedbutton {
+  /* --background: #ffffff; */
+  --border-width: 0.5em;
+  --edge-size: 0.4em;
+
+  display: inline-grid;
+  /* padding: 0.5em 1.5em; */
+  border: 0;
+  /* background: var(--background); */
+  clip-path: polygon(
+    /* top left */ calc(100% - var(--edge-size)) 0%,
+    /* top right 1 */ 100% var(--edge-size),
+    /* top right 2 */ 100% 100%,
+    /* bottom right */ var(--edge-size) 100%,
+    /* bottom left 1*/ 0% calc(100% - var(--edge-size)),
+    /* bottom left 2 */ 0 0
+  );
 }
